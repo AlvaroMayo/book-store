@@ -1,0 +1,42 @@
+[
+  {
+      "id": 1,
+      "name": "Fatherhood",
+      "author": "Christopher Wilson",
+      "price": 10,
+      "rating": 4,
+      "cover": "/zoo.png"
+  },
+  {
+      "id": 2,
+      "name": "In A Land Of Paper Gods",
+      "author": "Rebecca Mackenzie",
+      "price": 15,
+      "rating": 5,
+      "cover": "/gods.png"
+  },
+  {
+      "id": 3,
+      "name": "Tattletale",
+      "author": "Sarah J. Noughton",
+      "price": 10,
+      "rating": 4,
+      "cover": "/tattle.png"
+  },
+  {
+      "id": 4,
+      "name": "The Firm",
+      "author": "Sarah J. Noughton",
+      "price": 10,
+      "rating": 4,
+      "cover": "/2.png"
+  },
+  {
+      "id": 5,
+      "name": "Big Bang Disruption",
+      "author": "Larry Downes",
+      "price": 10,
+      "rating": 4,
+      "cover": "/3.png"
+  }
+]
