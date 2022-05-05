@@ -6,27 +6,27 @@ const BookModel = types.model("Book", {
   price: types.number,
   author: types.string,
   rating: types.number,
-  coverImage: types.string,
+  cover: types.string,
 });
 
-const StoreModel = types
-  .model("Store", {
+const RootModel = types
+  .model("Root", {
     id: types.number,
     books: types.array(BookModel),
-    cart: types.array(BookModel),
+    cart: types.array(types.number),
   })
   .actions((self) => ({
-    addToCart(newBook: Book) {
-      self.cart.push(newBook);
+    addToCart(id: number) {
+      self.cart.push(id);
+    },
+  }))
+  .views((self) => ({
+    get booksInCart() {
+      return self.books;
     },
   }));
 
-const RootModel = types.model("Root", {
-  store: StoreModel,
-});
-
 export { RootModel };
 
-export type Root = Instance<typeof RootModel>;
-export type Store = Instance<typeof StoreModel>;
-export type Book = Instance<typeof BookModel>;
+export type IRoot = Instance<typeof RootModel>;
+export type IBook = Instance<typeof BookModel>;
