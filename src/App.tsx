@@ -2,11 +2,12 @@ import "./App.css";
 
 import { Book } from "./component/Book";
 import { Grid } from "@mui/material";
-import { Basket } from "./component/Basket";
 import { useStore } from "./hooks";
+import Basket from "./component/Basket";
 
 function App() {
   const { books } = useStore();
+  
   return (
     <div className="App">
       <Grid container justifyContent={"space-between"} direction={"row"}>

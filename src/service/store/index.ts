@@ -7,17 +7,19 @@ const BookModel = types.model("Book", {
   author: types.string,
   rating: types.number,
   cover: types.string,
-});
+})
 
 const RootModel = types
   .model("Root", {
     id: types.number,
     books: types.array(BookModel),
     cart: types.array(types.number),
+    cartTotal: types.optional(types.number, 0)
   })
   .actions((self) => ({
-    addToCart(id: number) {
+    addToCart(id: number, price: number) {
       self.cart.push(id);
+      self.cartTotal = self.cartTotal + price
     },
   }))
   .views((self) => ({
