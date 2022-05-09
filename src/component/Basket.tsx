@@ -11,8 +11,7 @@ export default observer(function Basket() {
       <h1 style={{ textAlign: "center" }}>Cart</h1>
       {cart.map((item, i) => (
         <Grid container flexDirection={"column"} alignItems={"center"} key={i}>
-          <BasketItem {...item} />
-          {item}
+          <BasketItem item={item} />
         </Grid>
       ))}
       <span>Total</span>

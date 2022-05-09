@@ -1,13 +1,23 @@
 import { useStore } from "../hooks";
 
-export const BasketItem = (item: number) => {
-  const { booksInCart } = useStore();
-  console.log(item)
+export interface BasketItemProps {
+  item: number;
+}
+
+export const BasketItem = ({ item }: BasketItemProps) => {
+  const { booksInCart, removeFromCart } = useStore();
   item = item - 1;
+  const { cover, price, id } = booksInCart[item];
+
+  const handleRemoveFromCart = () => {
+    removeFromCart(id, price);
+  };
+
   return (
     <>
-      <img src={`/img${booksInCart[item].cover}`} alt="" />
-      <span>£{booksInCart[item].price}</span>
+      <img src={`/img${cover}`} alt="" />
+      <span>£{price}</span>
+      <button onClick={handleRemoveFromCart}>delete</button>
     </>
   );
 };

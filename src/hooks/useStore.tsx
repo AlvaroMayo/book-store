@@ -2,7 +2,6 @@ import { createContext, useContext } from "react";
 import { RootModel } from "../service/store";
 
 const store = RootModel.create({
-    id:1,
     cart: [],
     books: [
         {

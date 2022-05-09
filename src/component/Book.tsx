@@ -7,6 +7,7 @@ import { IBook } from "../service/store";
 
 export const Book = ({ id, price, title, rating, cover, author }: IBook) => {
   const { addToCart } = useStore();
+
   const handleAddBook = () => {
     addToCart(id, price);
   };
