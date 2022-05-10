@@ -1,32 +1,20 @@
 import "./App.css";
 
-import { Book } from "./component/Book";
 import { Grid } from "@mui/material";
-import { useStore } from "./hooks";
 import Basket from "./component/Basket";
+import { BookList } from "./component/BookList";
+import { Hero } from "./component/Hero";
 
 function App() {
-  const { books } = useStore();
 
   return (
     <div className="App">
-      <Grid container justifyContent={"space-between"} direction={"row"}>
-        <Grid item xs={10}>
-          <Grid container justifyContent={"center"} alignItems={"flex-start"}>
-            {books.map((book) => (
-              <Grid
-                item
-                xs={2}
-                justifyContent={"flex-start"}
-                alignItems={"center"}
-                key={book.id}
-              >
-                <Book {...book} />
-              </Grid>
-            ))}
-          </Grid>
+      <Grid container justifyContent={"space-between"} direction={"row"} maxHeight={"100vh"} height={"100vh"}>
+        <Grid item xs={11}>
+          <Hero />
+         <BookList />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1}>
           <Basket />
         </Grid>
       </Grid>
