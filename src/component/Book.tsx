@@ -4,7 +4,6 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import { useStore } from "../hooks";
 import { IBook } from "../service/store";
-import { height } from "@mui/system";
 
 export const Book = ({ id, price, title, rating, cover, author }: IBook) => {
   const { addToCart } = useStore();

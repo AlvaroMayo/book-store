@@ -22,8 +22,8 @@ export const BasketItem = ({ item }: BasketItemProps) => {
           onClick={handleRemoveFromCart}
           style={{
             position: "absolute",
-            right: "0px",
-            top:"0px",
+            left: "0",
+            top:"-2px",
             fill: "black",
             cursor: "pointer",
           }}
