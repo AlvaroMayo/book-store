@@ -1,4 +1,6 @@
+import React from "react";
 import { useStore } from "../hooks";
+import CancelTwoToneIcon from '@mui/icons-material/CancelTwoTone';
 
 export interface BasketItemProps {
   item: number;
@@ -15,9 +17,20 @@ export const BasketItem = ({ item }: BasketItemProps) => {
 
   return (
     <>
-      <img src={`/img${cover}`} alt="" />
-      <span>£{price}</span>
-      <button onClick={handleRemoveFromCart}>delete</button>
+      <div style={{position:"relative"}}>
+        <CancelTwoToneIcon
+          onClick={handleRemoveFromCart}
+          style={{
+            position: "absolute",
+            right: "0px",
+            top:"0px",
+            fill: "black",
+            cursor: "pointer",
+          }}
+        />
+        <img src={`/img${cover}`} alt="" width={"105px"} />
+      </div>
+      <span style={{textAlign:"center"}}>£{price}</span>
     </>
   );
 };
