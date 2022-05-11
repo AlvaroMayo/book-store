@@ -4,12 +4,14 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import { useStore } from "../hooks";
 import { IBook } from "../service/store";
+import { BookCover } from "./BookCover";
 
-export const Book = ({ id, price, title, rating, cover, author }: IBook) => {
+export const Book = (book: IBook) => {
+  const { title, rating, cover, author } = book;
   const { addToCart } = useStore();
 
   const handleAddBook = () => {
-    addToCart(id, price);
+    addToCart(book);
   };
 
   let stars = [];
@@ -23,13 +25,7 @@ export const Book = ({ id, price, title, rating, cover, author }: IBook) => {
 
   return (
     <Grid container direction={"column"}>
-      <div style={{minHeight: '220px'}}>
-        <img
-          style={{ maxWidth: "150px", height: "100%" }}
-          src={`/img${cover}`}
-          alt=""
-        />
-      </div>
+      <BookCover cover={cover} />
       <h5 style={{ fontWeight: "300", fontSize: "18px", marginBottom: '5px' }}>{title}</h5>
       <span style={{fontSize: '12px'}}>by {author}</span>
       <span style={{ margin: "15px 0" }}>

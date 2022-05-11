@@ -1,8 +1,9 @@
 import { Book } from "../component/Book";
 import { Grid } from "@mui/material";
 import { useStore } from "../hooks";
+import { observer } from "mobx-react-lite";
 
-export const BookList = () => {
+export default observer(function BookList() {
   const { books } = useStore();
   return (
     <Grid container justifyContent={"center"} alignItems={"flex-start"}>
@@ -19,4 +20,5 @@ export const BookList = () => {
       ))}
     </Grid>
   );
-};
+}
+)

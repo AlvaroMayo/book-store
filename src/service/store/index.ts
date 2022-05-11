@@ -11,33 +11,30 @@ const BookModel = types.model("Book", {
 
 const RootModel = types
   .model("Root", {
-    books: types.array(BookModel),
-    cart: types.array(types.number),
-    cartTotal: types.optional(types.number, 0),
+    books: types.optional(types.array(BookModel),[]),
+    cart: types.optional(types.array(BookModel),[]),
   })
   .actions((self) => ({
-    addToCart(id: number, price: number) {
-      self.cart.push(id);
-      self.cartTotal = self.cartTotal + price;
+    createBook(books:IBook[]) {
+      self.books.replace(books)
     },
-    removeFromCart(id: number, price: number) {
-      self.cartTotal = self.cartTotal - price;
-
-      for (let i = 0; i < self.cart.length; i++) {
-        if (self.cart[i] === id) {
-          self.cart.remove(self.cart[i]);
-          break;
-        }
-      }
+    addToCart(book: IBook) {
+      self.cart.push(book);
+    },
+    removeFromCart(id: number) {
+      self.cart.replace(self.cart.filter(x => x.id !== id));
     },
   }))
   .views((self) => ({
-    get booksInCart() {
-      return self.books;
-    },
+    get totalCart() {
+      return self.cart.reduce((acc, curr) => {return acc + curr.price}, 0)
+    }
   }));
 
 export { RootModel };
 
 export type IRoot = Instance<typeof RootModel>;
 export type IBook = Instance<typeof BookModel>;
+
+
+//put and map identifier reference

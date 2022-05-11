@@ -1,9 +1,13 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "../hooks";
-import { BasketItem } from "./BasketItem";
+import { BookCover } from "./BookCover";
 
 export default observer(function Basket() {
-  const { cart, cartTotal } = useStore();
+  const { cart, totalCart, removeFromCart  } = useStore();
+
+  const handleRemoveFromCart = (id: number) => {
+    removeFromCart(id);
+  };
 
   return (
     <div
@@ -19,14 +23,15 @@ export default observer(function Basket() {
       </div>
       <div style={{ overflowY: "scroll", overflowX: "hidden", height: "90vh" }}>
         {cart.map((item, i) => (
-          <div style={{ display: "flex", flexDirection: "column" }} key={i}>
-            <BasketItem item={item} />
+          <div style={{ display: "flex", flexDirection: "column" }} key={i} onClick={() => handleRemoveFromCart(item.id)}>
+           <BookCover cover={item.cover} size="100px" />
+           <p>{item.price}</p>
           </div>
         ))}
       </div>
       <div style={{display:"flex", flexDirection: "column", height:"8vh"}}>
         <span>Total</span>
-        <span>£ {cartTotal}</span>
+        <span>£ {totalCart}</span>
       </div>
     </div>
   );
